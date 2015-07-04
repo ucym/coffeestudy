@@ -1,0 +1,132 @@
+html, body {
+    width: 100%;
+    height: 100%;
+}
+body {
+    /* margin-top: 51px; */
+    overflow: hidden;
+}
+
+.btn {
+    border-radius: 0;
+}
+
+.navbar {
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+#app-root {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    -o-flex-direction: column;
+    flex-direction: column;
+
+    -webkit-align-items: stretch;
+    -moz-align-items: stretch;
+    -ms-align-items: stretch;
+    -o-align-items: stretch;
+    align-items: stretch;
+
+    height: 100%;
+}
+
+#content-root {
+    -webkit-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    -o-flex: 1;
+    flex: 1;
+
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+
+    -webkit-align-items: stretch;
+    -moz-align-items: stretch;
+    -ms-align-items: stretch;
+    -o-align-items: stretch;
+    align-items: stretch;
+
+    height: 100%;
+}
+
+#editors {
+    width: 200px;
+    height: 100%;
+
+    background-color: #eee;
+}
+    #editors > .nav {
+        width: 100%;
+    }
+
+    #editors li > a {
+        border-radius: 0;
+    }
+
+    #editors .nav-stacked > li + li {
+        margin-top: 0;
+    }
+
+.editor-container {
+    -webkit-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    -o-flex: 1;
+    flex: 1;
+
+    /*height: 100%;*/
+    padding: 0;
+    overflow: auto;
+}
+
+.edit-indicator {
+    display: inline-block;
+    float: right;
+    margin-top: 7px;
+
+    border: 5px solid rgba(0, 209, 255, 0);
+    border-radius: 5px;
+
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+}
+    .edit-indicator.edit {
+        border-color: rgba(0, 209, 255, 1);
+    }
+
+#tabpage-private {
+    overflow: auto;
+}
+
+.tab-pane {
+    width: 100%;
+}
+    .tab-pane .container-fluid {
+        padding: 0;
+    }
+
+.pane {
+    height: 100%;
+    padding: 0;
+}
+
+
+.CodeMirror {
+    height: 100%;
+}
+
+textarea[readonly]+.CodeMirror > .CodeMirror-scroll {
+    background-color: rgba(0, 0, 0, 0.2);
+}
