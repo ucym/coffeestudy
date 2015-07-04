@@ -116,6 +116,8 @@
             #
             # Editor button events
             $("#coffee-save").on "click", ->
+                return if inputEditor.currentRoomId isnt myRoomId
+                
                 localStorage.setItem "code", inputEditor.getValue()
 
                 compileToShow inputEditor, exportEditor
