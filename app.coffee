@@ -1,8 +1,6 @@
-app = require("http").createServer(handler)
-io = require("socket.io").listen(app)
-fs = require("fs")
-path = require "path"
-url = require "url"
+fs      = require("fs")
+path    = require "path"
+url     = require "url"
 
 handler = (req, res) ->
     pathname = url.parse(req.url).pathname
@@ -20,8 +18,10 @@ handler = (req, res) ->
         return
     return
 
-app.listen 8181
+app     = require("http").createServer(handler)
+io      = require("socket.io").listen(app)
 contents = {}
+
 io.sockets.on "connection", (socket) ->
     myRoomId = null
 
@@ -72,4 +72,5 @@ io.sockets.on "connection", (socket) ->
 
     return
 
+app.listen 8181
 console.log "Initialized."
