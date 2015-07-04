@@ -63,6 +63,7 @@ body {
 #editors {
     width: 200px;
     height: 100%;
+    overflow: auto;
 
     background-color: #eee;
 }
