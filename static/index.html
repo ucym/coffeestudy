@@ -109,6 +109,12 @@
 
             socket.on "teardown room", (data) ->
                 $("#editors [data-roomId='#{data.roomId}']").parent("li:first").slideUp 400, -> $(this).remove()
+
+                if data.roomId is myRoomId
+                    $(window).off "beforeunload"
+                    localStorage.removeItem("roomId")
+                    location.reload()
+
                 return
 
             #
@@ -117,7 +123,7 @@
             # Editor button events
             $("#coffee-save").on "click", ->
                 return if inputEditor.currentRoomId isnt myRoomId
-                
+
                 localStorage.setItem "code", inputEditor.getValue()
 
                 compileToShow inputEditor, exportEditor
@@ -189,9 +195,20 @@
 
                 myRoomId = localStorage.getItem "roomId"
 
-                if not myRoomId
-                    while myRoomId = prompt("好きなユーザー名を入力してください")
-                        continue if myRoomId is ""
+                if not myRoomId?
+                    while true
+                        myRoomId = prompt("好きなユーザー名を入力してください(半角英数20字以内)")
+
+                        continue if myRoomId in ["", null]
+
+                        if myRoomId.length > 20
+                            alert "ユーザー名は20文字以内で入力してください"
+                            continue
+
+                        unless /^[a-zA-Z0-9\-_]+$/g.test(myRoomId)
+                            alert("正しい形式で入力してください")
+                            continue
+
                         break
 
                     localStorage.setItem "roomId", myRoomId
